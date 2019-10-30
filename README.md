@@ -26,3 +26,21 @@ Android image download mini Glide Library version
             e.printStackTrace();
         }
     }
+
+Activity Usage
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        imageView = findViewById(R.id.imageView);
+        final ImageDownload imageDownload = new ImageDownload();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                imageDownload.downloadImage(imageView);
+            }
+        }).start();
+    }
